@@ -1,0 +1,134 @@
+
+<html>
+<head>
+
+ <script data-require="jquery@1.10.1" data-semver="1.10.1" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    
+    <script data-require="angular.js@*" data-semver="1.0.8" src="http://code.angularjs.org/1.0.8/angular.min.js"></script>
+    
+    <script src="app.js"></script>
+    <link data-require="bootstrap-css@3.0.0" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+
+
+
+<style>
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+</style>
+</head>
+
+
+
+
+
+<body ng-app="myapp" ng-controller="ctrl1" onload="myFunction()" style="margin:0;">
+
+<div id="loader"></div>
+
+<div style="display:none;" id="myDiv" class="animate-bottom">
+  
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <h3>Login- form</h3>
+           <form name="loginForm" novalidate="" ng-submit="login()">
+              <div class="form-group">
+              <input class="form-control" name="email" type="text" placeholder="Email" required="" ng-model="session.email" rc-mailgun-valid />
+              <span class="help-block">
+                <span ng-show="loginForm.email.$error.required">Required</span>
+                <span ng-show="loginForm.email.$error.rcMailgunEmailValid"> Invalid Email Address</span>
+                <span ng-show="loginForm.email.$error.rcMailgunInProgress"> Validating Email Address</span>
+                <span ng-show="rcMailgun.mailgunStatus"> Validation Error: {{ rcMailgun.mailgunStatus }}</span>
+              </span>
+            </div>
+            <div class="form-group">
+              <input class="form-control" name="password" type="password" placeholder="Password" required="" ng-model="session.password" />
+              <span class="help-block" ng-show="loginForm.password.$error.required">Required</span>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" value="Login" title="Login" ng-disabled="!loginForm.$valid">
+                <span>Login</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+ 
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+<script>
+var myVar;
+
+function myFunction() {
+    myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script>
+
+</body>
+</html>
