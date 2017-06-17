@@ -1,0 +1,22 @@
+{
+  "name": "iitm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heena001/iitm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Heena001/iitm/issues"
+  },
+  "homepage": "https://github.com/Heena001/iitm#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
